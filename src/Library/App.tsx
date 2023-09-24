@@ -1,5 +1,11 @@
+import { DummyComponent } from "../Components/DummyComponent";
 function App() {
-  return <>Let's get Started.</>;
+  return (
+    <>
+      <h2>Let's get Started.</h2>
+      <DummyComponent />
+    </>
+  );
 }
 
 export default App;
