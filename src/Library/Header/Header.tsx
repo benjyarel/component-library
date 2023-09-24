@@ -25,5 +25,6 @@ const HeaderLayout = styled.div`
 `;
 
 const Title = styled.div`
-  margin: auto;
+  position: absolute;
+  left: 50%;
 `;
