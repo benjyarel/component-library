@@ -23,16 +23,16 @@ const BurgerLayout = styled.div`
   align-items: center;
 `;
 
-const ExternalBar = styled.div`
+const ExternalBar = styled.div<{ $open: boolean }>`
   position: absolute;
   background-color: black;
 
   height: 6px;
   width: 60px;
   transition-property: opacity;
-  transition-delay: ${(props) => (props.$open ? 0 : "650ms")};
+  transition-delay: ${({ $open }) => ($open ? 0 : "650ms")};
   transition-duration: ${VANISH_DELAY};
-  opacity: ${(props) => (props.$open ? "0" : "1")};
+  opacity: ${({ $open }) => ($open ? "0" : "1")};
 `;
 
 const BarTop = styled(ExternalBar)`
@@ -43,7 +43,7 @@ const BarDown = styled(ExternalBar)`
   top: 51px;
 `;
 
-const BarMiddle = styled.div`
+const BarMiddle = styled.div<{ $open: boolean; $order: string }>`
   position: absolute;
   top: 34px;
   background-color: black;
@@ -54,9 +54,9 @@ const BarMiddle = styled.div`
   transition-delay: ${VANISH_DELAY};
   transition-duration: 500ms;
 
-  transform: ${(props) =>
-    props.$open
-      ? props.$order === "positiv"
+  transform: ${({ $order, $open }) =>
+    $open
+      ? $order === "positiv"
         ? "rotate(45deg)"
         : "rotate(-45deg)"
       : "none"};
