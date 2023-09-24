@@ -1,8 +1,12 @@
 import styled from "styled-components";
+import { useRecoilValue } from "recoil";
+import { isMenuOpen } from "../state";
 
 const VANISH_DELAY = "250ms";
 
-export const BurgerIcon = ({ open }: { open: boolean }) => {
+export const BurgerIcon = () => {
+  const open = useRecoilValue(isMenuOpen);
+
   return (
     <BurgerLayout>
       <BarTop $open={open} />

@@ -1,15 +1,16 @@
-import { useState } from "react";
 import styled from "styled-components";
 import { BurgerIcon } from "./BurgerIcon";
+import { useSetRecoilState } from "recoil";
+import { isMenuOpen } from "../state";
 
 export const Menu = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const setIsMenuOpen = useSetRecoilState(isMenuOpen);
 
-  const handleClick = () => setMenuOpen((prev) => !prev);
+  const handleClick = () => setIsMenuOpen((state) => !state);
 
   return (
     <Button onClick={handleClick}>
-      <BurgerIcon open={menuOpen} />
+      <BurgerIcon />
     </Button>
   );
 };
