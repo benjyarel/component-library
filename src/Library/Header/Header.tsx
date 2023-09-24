@@ -1,15 +1,24 @@
 import { Menu } from "../Menu";
 import styled from "styled-components";
+
 export const Header = () => {
   return (
     <HeaderLayout>
       <Menu />
-      <h2>Header</h2>
+      <Title>Component Library</Title>
     </HeaderLayout>
   );
 };
 
 const HeaderLayout = styled.div`
+  height: 60px;
   display: flex;
-  background-color: gray;
+  align-items: center;
+
+  background: #242424;
+  color: lightblue;
+`;
+
+const Title = styled.div`
+  margin: auto;
 `;
