@@ -1,11 +1,15 @@
 import { Menu } from "../Menu";
+import styled from "styled-components";
 export const Header = () => {
-  const tmpStyle = { width: "100%", display: "flex", justifyContent: "center" };
-
   return (
-    <div style={tmpStyle}>
+    <HeaderLayout>
       <Menu />
       <h2>Header</h2>
-    </div>
+    </HeaderLayout>
   );
 };
+
+const HeaderLayout = styled.div`
+  display: flex;
+  background-color: gray;
+`;
