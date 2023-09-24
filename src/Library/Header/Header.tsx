@@ -15,8 +15,13 @@ const HeaderLayout = styled.div`
   display: flex;
   align-items: center;
 
-  background: #242424;
-  color: lightblue;
+  font-family: monospace;
+  color: #000;
+  font-size: large;
+  font-weight: 900;
+
+  background: #fff;
+  border: solid 6px #000;
 `;
 
 const Title = styled.div`
