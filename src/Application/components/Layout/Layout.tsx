@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import styled from "styled-components";
 import { Header } from "../Header";
 import { useRecoilValue } from "recoil";
-import { isMenuOpen } from "../state";
+import { isMenuOpen } from "../../state";
 
 export const Layout = ({ children }: { children: ReactNode }) => {
   return (
