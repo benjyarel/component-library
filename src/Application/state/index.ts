@@ -7,5 +7,5 @@ export const isMenuOpen = atom({
 
 export const selectedComponent =  atom({
   key: "selected-component",
-  default: null,
+  default: "",
 });
