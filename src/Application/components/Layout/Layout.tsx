@@ -19,9 +19,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
 
 const MenuPanel = () => {
   const menuOpen = useRecoilValue(isMenuOpen);
-  const [component, setComponent] = useRecoilState(selectedComponent);
-
-  console.log(component);
+  const [_, setComponent] = useRecoilState(selectedComponent);
 
   const createList = () => {
     return components.map(({ id, componentName, category }) => {

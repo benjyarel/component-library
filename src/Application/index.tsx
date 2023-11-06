@@ -1,17 +1,20 @@
 import { Layout } from "./components/Layout";
-
+import { useRecoilValue, useRecoilState } from "recoil";
 import { RecoilRoot } from "recoil";
-
+import { selectedComponent } from "./state";
 function App() {
   return (
     <RecoilRoot>
-      <Content />
+      <Layout>
+        <Renderer />
+      </Layout>
+      ;
     </RecoilRoot>
   );
 }
 
-const Content = () => {
-  return <Layout>Hello WORLD</Layout>;
+const Renderer = () => {
+  const componentId = useRecoilValue(selectedComponent);
+  return <h1>{componentId || "No selected component"}</h1>;
 };
-
 export default App;
