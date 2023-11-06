@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 import styled from "styled-components";
 import { Header } from "../Header";
-import { useRecoilValue } from "recoil";
-import { isMenuOpen } from "../../state";
+import { useRecoilValue, useRecoilState } from "recoil";
+import { isMenuOpen, selectedComponent } from "../../state";
 import { components } from "../../../library";
 
 export const Layout = ({ children }: { children: ReactNode }) => {
@@ -19,6 +19,9 @@ export const Layout = ({ children }: { children: ReactNode }) => {
 
 const MenuPanel = () => {
   const menuOpen = useRecoilValue(isMenuOpen);
+  const [component, setComponent] = useRecoilState(selectedComponent);
+
+  console.log(component);
 
   const createList = () => {
     return components.map(({ id, componentName, category }) => {
@@ -32,7 +35,11 @@ const MenuPanel = () => {
     <MenuPanelLayout $isVisible={menuOpen}>
       <ul>
         {componentList.map((component) => {
-          return <li key={component.id}>{component.componentName}</li>;
+          return (
+            <li onClick={() => setComponent(component.id)} key={component.id}>
+              {component.componentName}
+            </li>
+          );
         })}
       </ul>
     </MenuPanelLayout>
