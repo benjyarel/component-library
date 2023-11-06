@@ -9,12 +9,8 @@ export const config = {
   id: ID,
   componentName: 'Dummy Component',
   category: "buttons",
-  atom: atom({
-    key: ID,
-    default: {
-      component: DummyComponent,
-    }
-  })
+  component: DummyComponent,
+  atom: atom({ key: ID })
 }
 
 export default config;
