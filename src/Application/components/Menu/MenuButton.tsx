@@ -3,7 +3,7 @@ import { BurgerIcon } from "./BurgerIcon";
 import { useSetRecoilState } from "recoil";
 import { isMenuOpen } from "../../state";
 
-export const Menu = () => {
+export const MenuButton = () => {
   const setIsMenuOpen = useSetRecoilState(isMenuOpen);
 
   const handleClick = () => setIsMenuOpen((state) => !state);

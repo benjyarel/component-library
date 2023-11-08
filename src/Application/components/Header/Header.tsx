@@ -1,10 +1,10 @@
-import { Menu } from "../Menu";
+import { MenuButton } from "../Menu";
 import styled from "styled-components";
 
 export const Header = () => {
   return (
     <HeaderLayout>
-      <Menu />
+      <MenuButton />
       <Title>Component Library</Title>
     </HeaderLayout>
   );
