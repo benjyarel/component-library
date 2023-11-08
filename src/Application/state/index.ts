@@ -1,5 +1,5 @@
-import { atom, atomFamily } from "recoil";
-
+import { atom, selector } from "recoil";
+import {components as configComponents} from '../../library';
 export const isMenuOpen = atom({
   key: "is-menu-open",
   default: false,
@@ -15,7 +15,11 @@ export const componentIds = atom({
   default: [],
 })
 
-export const allComponents = atomFamily({
-  key: 'all-components',
-  default: {},
-})
+export const componentSelected = selector({
+  key: "component",
+  get: ({get}) =>  {
+    const componentId = get(selectedComponentId);
+
+    return configComponents.find(cc => cc.id === componentId);
+
+  }})

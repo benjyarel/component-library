@@ -1,39 +1,37 @@
+import { useEffect } from "react";
 import { Layout } from "./components/Layout";
 
-import { RecoilRoot, useRecoilState } from "recoil";
-import { components } from "../library";
+import { RecoilRoot, useSetRecoilState } from "recoil";
+import { components as componentsConfig } from "../library";
 import { Renderer } from "./components/Renderer";
-import { componentIds, allComponents } from "./state";
-
+import { componentIds } from "./state";
 function App() {
-  // function initializeState({ set }) {
-  //   const allComponentIds = components.map((config) => {
-  //     const { atom, ...configurationValues } = config;
-  //     // instantiate state for each component in library
-  //     set(atom, configurationValues);
+  const setter = useSetRecoilState(componentIds);
+  useEffect(() => {
+    const loadComponents = () => {
+      const allComponentIds = componentsConfig.map((cc) => {
+        return cc.id;
+      });
 
-  //     return configurationValues.id;
-  //   });
+      setter(allComponentIds);
+    };
 
-  //   set(componentIds, allComponentIds);
-  // }
-
-  function initializeState({ set }) {
-    set(allComponents, "");
-    const allComponentIds = components.map((config) => {
-      const { atom, ...configurationValues } = config;
-    });
-
-    set(componentIds, allComponentIds);
-  }
+    loadComponents();
+  }, []);
 
   return (
-    <RecoilRoot initializeState={initializeState}>
-      <Layout>
-        <Renderer />
-      </Layout>
-    </RecoilRoot>
+    <Layout>
+      <Renderer />
+    </Layout>
   );
 }
 
-export default App;
+const AppWithProviders = () => {
+  return (
+    <RecoilRoot>
+      <App />
+    </RecoilRoot>
+  );
+};
+
+export default AppWithProviders;
