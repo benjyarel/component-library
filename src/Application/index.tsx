@@ -1,13 +1,30 @@
+import { useEffect } from "react";
 import { Layout } from "./components/Layout";
 
-import { RecoilRoot } from "recoil";
-
+import { RecoilRoot, useSetRecoilState } from "recoil";
+import { components as componentsConfig } from "../library";
+import { Renderer } from "./components/Renderer";
+import { componentIds } from "./state";
 function App() {
+  const setComponentIds = useSetRecoilState(componentIds);
+
+  useEffect(() => {
+    setComponentIds(componentsConfig.map((cc) => cc.id));
+  }, []);
+
   return (
-    <RecoilRoot>
-      <Layout>Hello WORLD</Layout>
-    </RecoilRoot>
+    <Layout>
+      <Renderer />
+    </Layout>
   );
 }
 
-export default App;
+const AppWithProviders = () => {
+  return (
+    <RecoilRoot>
+      <App />
+    </RecoilRoot>
+  );
+};
+
+export default AppWithProviders;

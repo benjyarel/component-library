@@ -1,8 +1,9 @@
 import type { ReactNode } from "react";
 import styled from "styled-components";
 import { Header } from "../Header";
-import { useRecoilValue } from "recoil";
-import { isMenuOpen } from "../../state";
+import { useRecoilValue, useRecoilState } from "recoil";
+import { isMenuOpen, selectedComponentId } from "../../state";
+import { components } from "../../../library";
 
 export const Layout = ({ children }: { children: ReactNode }) => {
   return (
@@ -18,8 +19,29 @@ export const Layout = ({ children }: { children: ReactNode }) => {
 
 const MenuPanel = () => {
   const menuOpen = useRecoilValue(isMenuOpen);
+  const [_, setComponent] = useRecoilState(selectedComponentId);
 
-  return <MenuPanelLayout $isVisible={menuOpen}>WIP</MenuPanelLayout>;
+  const createList = () => {
+    return components.map(({ id, componentName, category }) => {
+      return { id, componentName, category };
+    });
+  };
+
+  const componentList = createList();
+
+  return (
+    <MenuPanelLayout $isVisible={menuOpen}>
+      <ul>
+        {componentList.map((component) => {
+          return (
+            <li onClick={() => setComponent(component.id)} key={component.id}>
+              {component.componentName}
+            </li>
+          );
+        })}
+      </ul>
+    </MenuPanelLayout>
+  );
 };
 
 const StyledLayout = styled.div`
