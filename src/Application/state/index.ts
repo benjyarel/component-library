@@ -1,22 +1,23 @@
 import { atom, selector } from "recoil";
 import {components as configComponents} from '../../library';
+
 export const isMenuOpen = atom({
-  key: "is-menu-open",
+  key: "isMenuOpen",
   default: false,
 });
 
 export const selectedComponentId =  atom({
-  key: "selected-component-id",
+  key: "selectedComponentId",
   default: "",
 });
 
 export const componentIds = atom({
-  key: "component-ids",
+  key: "componentIds",
   default: [],
 })
 
-export const componentSelected = selector({
-  key: "component",
+export const componentConfig = selector({
+  key: "componentConfig",
   get: ({get}) =>  {
     const componentId = get(selectedComponentId);
 

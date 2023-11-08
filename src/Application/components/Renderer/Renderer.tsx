@@ -1,8 +1,9 @@
 import { useRecoilValue } from "recoil";
-import { componentSelected } from "../../state";
+import { componentConfig } from "../../state";
 
 export const Renderer = () => {
-  const config = useRecoilValue(componentSelected);
+  const config = useRecoilValue(componentConfig);
+
   if (!config) {
     return <p>NO COMPONENT SELECTED</p>;
   }

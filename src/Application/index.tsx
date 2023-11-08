@@ -6,17 +6,10 @@ import { components as componentsConfig } from "../library";
 import { Renderer } from "./components/Renderer";
 import { componentIds } from "./state";
 function App() {
-  const setter = useSetRecoilState(componentIds);
+  const setComponentIds = useSetRecoilState(componentIds);
+
   useEffect(() => {
-    const loadComponents = () => {
-      const allComponentIds = componentsConfig.map((cc) => {
-        return cc.id;
-      });
-
-      setter(allComponentIds);
-    };
-
-    loadComponents();
+    setComponentIds(componentsConfig.map((cc) => cc.id));
   }, []);
 
   return (
