@@ -1,19 +1,30 @@
 import { Layout } from "./components/Layout";
 
-import { RecoilRoot, useRecoilValue, atom } from "recoil";
-import { selectedComponent } from "./state";
+import { RecoilRoot, useRecoilState } from "recoil";
 import { components } from "../library";
-
-const titi = atom({ key: "ras", default: "merde" });
+import { Renderer } from "./components/Renderer";
+import { componentIds, allComponents } from "./state";
 
 function App() {
-  function initializeState({ set }) {
-    components.forEach((config) => {
-      const { atom, ...configurationValues } = config;
+  // function initializeState({ set }) {
+  //   const allComponentIds = components.map((config) => {
+  //     const { atom, ...configurationValues } = config;
+  //     // instantiate state for each component in library
+  //     set(atom, configurationValues);
 
-      set(atom, configurationValues);
-      // needs to insert in an index selector to list all components available
+  //     return configurationValues.id;
+  //   });
+
+  //   set(componentIds, allComponentIds);
+  // }
+
+  function initializeState({ set }) {
+    set(allComponents, "");
+    const allComponentIds = components.map((config) => {
+      const { atom, ...configurationValues } = config;
     });
+
+    set(componentIds, allComponentIds);
   }
 
   return (
@@ -25,12 +36,4 @@ function App() {
   );
 }
 
-const Renderer = () => {
-  const toto = components[0].atom;
-  const totoValue = useRecoilValue(toto);
-
-  console.log(totoValue);
-  const componentId = useRecoilValue(selectedComponent);
-  return <h1>{componentId || "No selected component"}</h1>;
-};
 export default App;
