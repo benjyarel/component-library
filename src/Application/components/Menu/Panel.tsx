@@ -32,20 +32,39 @@ export const Panel = () => {
   };
 
   const componentList = createList();
-  console.log(componentList);
+
   return (
     <MenuPanelLayout $isVisible={menuOpen}>
-      <ul>
-        {componentList.map((component) => {
-          return (
-            <li onClick={() => setComponent(component.id)} key={component.id}>
-              {component.componentName}
-            </li>
-          );
-        })}
-      </ul>
+      {Object.entries(componentList).map(([categoryId, categoryComponents]) => (
+        <ul key={categoryId}>
+          <Category id={categoryId} components={categoryComponents} />
+        </ul>
+      ))}
     </MenuPanelLayout>
   );
+};
+
+const Category = ({
+  id,
+  components,
+}: {
+  id: string;
+  components: Component[];
+}) => {
+  return (
+    <li>
+      <p>{id}</p>
+      <ul>
+        {components.map((component) => (
+          <CategoryComponent key={component.id} component={component} />
+        ))}
+      </ul>
+    </li>
+  );
+};
+
+const CategoryComponent = ({ component }: { component: Component }) => {
+  return <li>{component.componentName}</li>;
 };
 const MenuPanelLayout = styled.div<{ $isVisible: boolean }>`
   position: fixed;
