@@ -4,18 +4,35 @@ import { useRecoilValue, useRecoilState } from "recoil";
 import { isMenuOpen, selectedComponentId } from "../../state";
 import { components } from "../../../library";
 
+// move this type to share folder
+
+interface Component {
+  id: string;
+  componentName: string;
+  category: string;
+}
+
 export const Panel = () => {
   const menuOpen = useRecoilValue(isMenuOpen);
   const [_, setComponent] = useRecoilState(selectedComponentId);
 
   const createList = () => {
-    return components.map(({ id, componentName, category }) => {
-      return { id, componentName, category };
-    });
+    return components.reduce(
+      (result, { id, componentName, category }) => {
+        if (!result[category]) {
+          result[category] = [];
+        }
+
+        result[category].push({ id, componentName, category });
+
+        return result;
+      },
+      {} as Record<string, Component[]>,
+    );
   };
 
   const componentList = createList();
-
+  console.log(componentList);
   return (
     <MenuPanelLayout $isVisible={menuOpen}>
       <ul>
