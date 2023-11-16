@@ -4,7 +4,7 @@ import { Layout } from "./components/Layout";
 import { RecoilRoot, useSetRecoilState } from "recoil";
 import { components as componentsConfig } from "../library";
 import { Renderer } from "./components/Renderer";
-import { componentIds } from "./state";
+import { componentIds } from "@store/index";
 function App() {
   const setComponentIds = useSetRecoilState(componentIds);
 

@@ -21,7 +21,8 @@
     "noFallthroughCasesInSwitch": true,
 
     "paths": {
-      "@shared-types": ["./src/types"]
+      "@shared-types": ["./src/types"],
+      "@store": ["./src/Application/store"]
     }
   },
   "include": ["src"],

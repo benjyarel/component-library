@@ -1,5 +1,5 @@
 import { useSetRecoilState } from "recoil";
-import { selectedComponentId } from "../../../../state";
+import { selectedComponentId } from "@store";
 import type { ComponentConfig } from "@shared-types";
 
 interface ComponentLinkProps {
