@@ -1,16 +1,10 @@
 import styled from "styled-components";
 
-import { useRecoilValue, useRecoilState, useSetRecoilState } from "recoil";
-import { isMenuOpen, selectedComponentId } from "../../state";
+import { useRecoilValue } from "recoil";
+import { isMenuOpen } from "../../state";
 import { components } from "../../../library";
-
-// move this type to share folder
-
-interface Component {
-  id: string;
-  componentName: string;
-  category: string;
-}
+import { Category } from "./components/Category";
+import type { ComponentConfig } from "../../types";
 
 export const Panel = () => {
   const menuOpen = useRecoilValue(isMenuOpen);
@@ -26,7 +20,7 @@ export const Panel = () => {
 
         return result;
       },
-      {} as Record<string, Component[]>,
+      {} as Record<string, ComponentConfig[]>,
     );
   };
 
@@ -35,51 +29,16 @@ export const Panel = () => {
   return (
     <MenuPanelLayout $isVisible={menuOpen}>
       {Object.entries(componentList).map(([categoryId, categoryComponents]) => (
-        <div key={categoryId}>
-          <Category id={categoryId} components={categoryComponents} />
-        </div>
+        <Category
+          key={categoryId}
+          id={categoryId}
+          components={categoryComponents}
+        />
       ))}
     </MenuPanelLayout>
   );
 };
 
-const Category = ({
-  id,
-  components,
-}: {
-  id: string;
-  components: Component[];
-}) => {
-  return (
-    <div>
-      <CategoryHeader title={id} />
-      <ul>
-        {components.map((component) => (
-          <CategoryComponent key={component.id} component={component} />
-        ))}
-      </ul>
-    </div>
-  );
-};
-const CategoryHeader = ({ title }: { title: string }) => {
-  return (
-    <>
-      <p>{title}</p>
-      <hr />
-    </>
-  );
-};
-
-const CategoryComponent = ({ component }: { component: Component }) => {
-  const setComponentIdselected = useSetRecoilState(selectedComponentId);
-
-  const handleOnClick = () => setComponentIdselected(component.id);
-  return (
-    <li>
-      <button onClick={handleOnClick}>{component.componentName}</button>
-    </li>
-  );
-};
 const MenuPanelLayout = styled.div<{ $isVisible: boolean }>`
   position: fixed;
   // Header height - bottom border size
