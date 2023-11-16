@@ -1,5 +1,5 @@
 import { CategoryHeader } from "../CategoryHeader";
-import type { ComponentConfig } from "../../../../types";
+import type { ComponentConfig } from "@shared-types";
 import { ComponentLink } from "../ComponentLink";
 export const Category = ({
   id,

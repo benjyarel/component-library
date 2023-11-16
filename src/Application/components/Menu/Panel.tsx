@@ -4,7 +4,7 @@ import { useRecoilValue } from "recoil";
 import { isMenuOpen } from "../../state";
 import { components } from "../../../library";
 import { Category } from "./components/Category";
-import type { ComponentConfig } from "../../types";
+import type { ComponentConfig } from "@shared-types";
 
 export const Panel = () => {
   const menuOpen = useRecoilValue(isMenuOpen);
