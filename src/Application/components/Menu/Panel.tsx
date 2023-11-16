@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { useRecoilValue, useRecoilState } from "recoil";
+import { useRecoilValue, useRecoilState, useSetRecoilState } from "recoil";
 import { isMenuOpen, selectedComponentId } from "../../state";
 import { components } from "../../../library";
 
@@ -14,7 +14,6 @@ interface Component {
 
 export const Panel = () => {
   const menuOpen = useRecoilValue(isMenuOpen);
-  const [_, setComponent] = useRecoilState(selectedComponentId);
 
   const createList = () => {
     return components.reduce(
@@ -36,9 +35,9 @@ export const Panel = () => {
   return (
     <MenuPanelLayout $isVisible={menuOpen}>
       {Object.entries(componentList).map(([categoryId, categoryComponents]) => (
-        <ul key={categoryId}>
+        <div key={categoryId}>
           <Category id={categoryId} components={categoryComponents} />
-        </ul>
+        </div>
       ))}
     </MenuPanelLayout>
   );
@@ -52,19 +51,34 @@ const Category = ({
   components: Component[];
 }) => {
   return (
-    <li>
-      <p>{id}</p>
+    <div>
+      <CategoryHeader title={id} />
       <ul>
         {components.map((component) => (
           <CategoryComponent key={component.id} component={component} />
         ))}
       </ul>
-    </li>
+    </div>
+  );
+};
+const CategoryHeader = ({ title }: { title: string }) => {
+  return (
+    <>
+      <p>{title}</p>
+      <hr />
+    </>
   );
 };
 
 const CategoryComponent = ({ component }: { component: Component }) => {
-  return <li>{component.componentName}</li>;
+  const setComponentIdselected = useSetRecoilState(selectedComponentId);
+
+  const handleOnClick = () => setComponentIdselected(component.id);
+  return (
+    <li>
+      <button onClick={handleOnClick}>{component.componentName}</button>
+    </li>
+  );
 };
 const MenuPanelLayout = styled.div<{ $isVisible: boolean }>`
   position: fixed;
