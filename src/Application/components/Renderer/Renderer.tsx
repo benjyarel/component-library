@@ -1,5 +1,5 @@
 import { useRecoilValue } from "recoil";
-import { componentConfig } from "../../state";
+import { componentConfig } from "@store";
 
 export const Renderer = () => {
   const config = useRecoilValue(componentConfig);

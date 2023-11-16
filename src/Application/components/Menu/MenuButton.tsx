@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { BurgerIcon } from "./BurgerIcon";
 import { useSetRecoilState } from "recoil";
-import { isMenuOpen } from "../../state";
+import { isMenuOpen } from "@store";
 
 export const MenuButton = () => {
   const setIsMenuOpen = useSetRecoilState(isMenuOpen);

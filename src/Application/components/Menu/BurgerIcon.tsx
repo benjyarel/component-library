@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useRecoilValue } from "recoil";
-import { isMenuOpen } from "../../state";
+import { isMenuOpen } from "@store";
 
 const VANISH_DELAY = "250ms";
 
