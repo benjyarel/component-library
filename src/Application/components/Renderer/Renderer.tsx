@@ -24,7 +24,7 @@ const Layout = styled.div`
   background-color: white;
   border-radius: 10px;
   margin: 8px;
-  width: 100%;
   padding: 4px;
   border: solid 6px #000;
+  flex: 1;
 `;

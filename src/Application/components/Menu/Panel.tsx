@@ -40,18 +40,15 @@ export const Panel = () => {
 };
 
 const MenuPanelLayout = styled.div<{ $isVisible: boolean }>`
-  position: fixed;
-  // Header height - bottom border size
-  top: 66px;
   width: 240px;
-  height: ${({ $isVisible }) => ($isVisible ? "0%" : "calc(100% - 72px)")};
-
+  height: 100%;
+  position: relative;
   background: #fff;
-  transition: height;
-  transition-duration: 450ms;
-
-  overflow: auto;
-
   border-right: solid 6px #000;
   border-bottom: solid 6px #000;
+  overflow: auto;
+
+  margin-left: ${({ $isVisible }) => ($isVisible ? "0" : "-246px")};
+  transition: margin-left;
+  transition-duration: 450ms;
 `;
