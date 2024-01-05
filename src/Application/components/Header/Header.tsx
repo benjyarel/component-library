@@ -15,16 +15,14 @@ const HeaderLayout = styled.div`
   display: flex;
   align-items: center;
 
-  font-family: monospace;
-  color: #000;
-  font-size: large;
-  font-weight: 900;
-
   background: #fff;
   border: solid 6px #000;
 `;
 
-const Title = styled.div`
+const Title = styled.h2`
   position: absolute;
   left: 50%;
+  font-family: monospace;
+  color: #000;
+  font-weight: 900;
 `;

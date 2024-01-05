@@ -3,7 +3,7 @@ import styled from "styled-components";
 const EmptyState = () => {
   return (
     <NoComponentWrapper>
-      <h2>No component selected</h2>
+      <h3>No component selected</h3>
     </NoComponentWrapper>
   );
 };
@@ -13,6 +13,10 @@ const NoComponentWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  font-family: monospace;
+  color: #000;
+  font-weight: 900;
 `;
 
 export { EmptyState };

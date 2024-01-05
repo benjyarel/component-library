@@ -30,9 +30,9 @@ const ExternalBar = styled.div<{ $open: boolean }>`
   height: 6px;
   width: 60px;
   transition-property: opacity;
-  transition-delay: ${({ $open }) => ($open ? "650ms" : 0)};
+  transition-delay: ${({ $open }) => ($open ? 0 : "650ms")};
   transition-duration: ${VANISH_DELAY};
-  opacity: ${({ $open }) => ($open ? "1" : "0")};
+  opacity: ${({ $open }) => ($open ? "0" : "1")};
 `;
 
 const BarTop = styled(ExternalBar)`
@@ -55,5 +55,9 @@ const BarMiddle = styled.div<{ $open: boolean; $order: string }>`
   transition-duration: 500ms;
 
   transform: ${({ $order, $open }) =>
-    $open ? "none" : $order === "positiv" ? "rotate(45deg)" : "rotate(-45deg)"};
+    $open
+      ? $order === "positiv"
+        ? "rotate(45deg)"
+        : "rotate(-45deg)"
+      : "none"};
 `;
