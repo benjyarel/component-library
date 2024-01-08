@@ -51,4 +51,7 @@ const MenuPanelLayout = styled.div<{ $isVisible: boolean }>`
   margin-left: ${({ $isVisible }) => ($isVisible ? "0" : "-246px")};
   transition: margin-left;
   transition-duration: 450ms;
+
+  font-family: monospace;
+  color: #645959;
 `;
