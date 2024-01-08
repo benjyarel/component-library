@@ -15,8 +15,8 @@ export const Category = ({
       <CategoryHeader title={id} />
       <ul>
         {components.map((component) => (
-          <ListItem>
-            <ComponentLink key={component.id} component={component} />
+          <ListItem key={component.id}>
+            <ComponentLink component={component} />
           </ListItem>
         ))}
       </ul>
