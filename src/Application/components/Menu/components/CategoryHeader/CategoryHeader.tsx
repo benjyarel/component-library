@@ -5,8 +5,8 @@ interface CategoryHeaderProps {
 export const CategoryHeader = ({ title }: CategoryHeaderProps) => {
   return (
     <>
-      <p>{title}</p>
       <hr />
+      <p>{title}</p>
     </>
   );
 };

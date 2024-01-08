@@ -1,4 +1,5 @@
 import { useSetRecoilState } from "recoil";
+import styled from "styled-components";
 import { selectedComponentId } from "@store";
 import type { ComponentConfig } from "@shared-types";
 
@@ -12,8 +13,10 @@ export const ComponentLink = ({ component }: ComponentLinkProps) => {
   const handleOnClick = () => setComponentIdselected(component.id);
 
   return (
-    <li>
-      <button onClick={handleOnClick}>{component.componentName}</button>
-    </li>
+    <StyledLink onClick={handleOnClick}>{component.componentName}</StyledLink>
   );
 };
+
+const StyledLink = styled.button`
+  all: unset;
+`;
