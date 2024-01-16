@@ -6,7 +6,7 @@ import { components as componentsConfig } from "../library";
 import { Renderer } from "./components/Renderer";
 import { componentIds } from "@store";
 function App() {
-  const setComponentIds = useSetRecoilState(componentIds);
+  const setComponentIds = useSetRecoilState<string[]>(componentIds);
 
   useEffect(() => {
     setComponentIds(componentsConfig.map((cc) => cc.id));
