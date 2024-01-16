@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 import { useRecoilValue } from "recoil";
 import { isMenuOpen } from "@store";
-import { components } from "../../../library";
-import { Category } from "./components/Category";
+import { components } from "../../../../../library";
+import { Category } from "../Category";
 import type { ComponentConfig } from "@shared-types";
 
 export const Panel = () => {

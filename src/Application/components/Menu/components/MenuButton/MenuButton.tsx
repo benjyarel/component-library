@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { BurgerIcon } from "./BurgerIcon";
+import { BurgerIcon } from "../BurgerIcon";
 import { useSetRecoilState } from "recoil";
 import { isMenuOpen } from "@store";
 
