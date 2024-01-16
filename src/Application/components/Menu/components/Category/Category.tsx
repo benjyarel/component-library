@@ -20,10 +20,15 @@ export const Category = ({
           </ListItem>
         ))}
       </ul>
+      <Divider />
     </div>
   );
 };
 
 const ListItem = styled.li`
   all: unset;
+`;
+
+const Divider = styled.hr`
+  margin: 0 8px;
 `;

@@ -7,7 +7,6 @@ interface CategoryHeaderProps {
 export const CategoryHeader = ({ title }: CategoryHeaderProps) => {
   return (
     <Wrapper>
-      <Divider />
       <HeaderTitle>{title}</HeaderTitle>
     </Wrapper>
   );
@@ -15,10 +14,6 @@ export const CategoryHeader = ({ title }: CategoryHeaderProps) => {
 
 const Wrapper = styled.div`
   margin-top: 8px;
-`;
-
-const Divider = styled.hr`
-  margin: 0 8px;
 `;
 
 const HeaderTitle = styled.p`

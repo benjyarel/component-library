@@ -12,6 +12,7 @@ export const ComponentLink = ({ component }: ComponentLinkProps) => {
     useRecoilState(selectedComponentId);
 
   const handleOnClick = () => setComponentIdselected(component.id);
+
   const isActive = componentSelectedId === component.id;
 
   return (
@@ -25,6 +26,7 @@ type StyledLinkProps = { $isActive: boolean };
 
 const StyledLink = styled.button<StyledLinkProps>`
   all: unset;
-  color: ${($isActive) => ($isActive ? "#172dba" : "none")};
-  cursor: ${($isActive) => ($isActive ? "default" : "pointer")};
+  color: ${({ $isActive }) => ($isActive ? "#172dba" : "inherit")};
+  cursor: ${({ $isActive }) => ($isActive ? "default" : "pointer")};
+  font-weight: ${({ $isActive }) => ($isActive ? "bold" : "normal")};
 `;
