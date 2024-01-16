@@ -20,5 +20,5 @@ const Button = styled.button`
 
   height: 100%;
   width: 240px;
-  border-right: solid 6px #000;
+  border-right: ${({ theme }) => theme.border};
 `;

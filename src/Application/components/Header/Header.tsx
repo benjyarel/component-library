@@ -16,7 +16,7 @@ const HeaderLayout = styled.div`
   align-items: center;
 
   background: #fff;
-  border: solid 6px #000;
+  border: ${({ theme }) => theme.border};
 `;
 
 const Title = styled.h2`

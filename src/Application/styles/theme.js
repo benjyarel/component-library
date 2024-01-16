@@ -1,4 +1,6 @@
 const defaultTheme = {
+  border: 'solid 6px #000',
+  borderRadius: '10px',
   colors: {
     outline: "black",
     text: "black",
@@ -8,6 +10,7 @@ const defaultTheme = {
     rendererBackground: "#fff",
     activeText: "#172dba",
   },
+
 };
 
 export { defaultTheme };

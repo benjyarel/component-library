@@ -43,9 +43,9 @@ const MenuPanelLayout = styled.div<{ $isVisible: boolean }>`
   width: 240px;
   height: 100%;
   position: relative;
-  background: #fff;
-  border-right: solid 6px #000;
-  border-bottom: solid 6px #000;
+  background: ${({ theme }) => theme.colors.background};
+  border-right: ${({ theme }) => theme.border};
+  border-bottom: ${({ theme }) => theme.border};
   overflow: auto;
 
   margin-left: ${({ $isVisible }) => ($isVisible ? "0" : "-246px")};
