@@ -19,5 +19,5 @@ const Wrapper = styled.div`
 const HeaderTitle = styled.p`
   font-weight: bold;
   margin-left: 16px;
-  color: black;
+  color: ${({ theme }) => theme.colors.text};
 `;

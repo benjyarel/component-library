@@ -23,6 +23,6 @@ const Title = styled.h2`
   position: absolute;
   left: 50%;
   font-family: monospace;
-  color: #000;
+  color: ${({ theme }) => theme.colors.text};
   font-weight: 900;
 `;

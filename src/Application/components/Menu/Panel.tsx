@@ -53,5 +53,5 @@ const MenuPanelLayout = styled.div<{ $isVisible: boolean }>`
   transition-duration: 450ms;
 
   font-family: monospace;
-  color: #645959;
+  color: ${({ theme }) => theme.colors.secondaryText};
 `;

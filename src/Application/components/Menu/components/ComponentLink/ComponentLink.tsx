@@ -26,7 +26,8 @@ type StyledLinkProps = { $isActive: boolean };
 
 const StyledLink = styled.button<StyledLinkProps>`
   all: unset;
-  color: ${({ $isActive }) => ($isActive ? "#172dba" : "inherit")};
+  color: ${({ $isActive, theme }) =>
+    $isActive ? theme.colors.activeText : "inherit"};
   cursor: ${({ $isActive }) => ($isActive ? "default" : "pointer")};
   font-weight: ${({ $isActive }) => ($isActive ? "bold" : "normal")};
 `;
