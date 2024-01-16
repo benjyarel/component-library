@@ -21,10 +21,10 @@ export const Renderer = () => {
 };
 
 const Layout = styled.div`
-  background-color: white;
-  border-radius: 10px;
+  background-color: ${({ theme }) => theme.colors.rendererBackground};
+  border-radius: ${({ theme }) => theme.borderRadius};
   margin: 8px;
   padding: 4px;
-  border: solid 6px #000;
+  border: ${({ theme }) => theme.border};
   flex: 1;
 `;

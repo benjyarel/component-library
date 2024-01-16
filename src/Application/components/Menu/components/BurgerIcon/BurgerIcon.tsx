@@ -25,7 +25,7 @@ const BurgerLayout = styled.div`
 
 const ExternalBar = styled.div<{ $open: boolean }>`
   position: absolute;
-  background-color: black;
+  background-color: ${({ theme }) => theme.colors.outline};
 
   height: 6px;
   width: 60px;
@@ -46,7 +46,7 @@ const BarDown = styled(ExternalBar)`
 const BarMiddle = styled.div<{ $open: boolean; $order: string }>`
   position: absolute;
   top: 34px;
-  background-color: black;
+  background-color: ${({ theme }) => theme.colors.outline};
   height: 6px;
   width: 60px;
 

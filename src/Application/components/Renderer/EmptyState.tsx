@@ -15,7 +15,7 @@ const NoComponentWrapper = styled.div`
   align-items: center;
 
   font-family: monospace;
-  color: #000;
+  color: ${({ theme }) => theme.colors.text};
   font-weight: 900;
 `;
 

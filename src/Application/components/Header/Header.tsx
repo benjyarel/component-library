@@ -16,13 +16,13 @@ const HeaderLayout = styled.div`
   align-items: center;
 
   background: #fff;
-  border: solid 6px #000;
+  border: ${({ theme }) => theme.border};
 `;
 
 const Title = styled.h2`
   position: absolute;
   left: 50%;
   font-family: monospace;
-  color: #000;
+  color: ${({ theme }) => theme.colors.text};
   font-weight: 900;
 `;

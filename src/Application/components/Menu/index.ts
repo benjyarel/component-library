@@ -1,2 +1,2 @@
-export { MenuButton } from './MenuButton';
-export { Panel } from './Panel';
+export { MenuButton } from './components/MenuButton';
+export { Panel } from './components/Panel';

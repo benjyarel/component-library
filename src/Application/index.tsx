@@ -5,8 +5,11 @@ import { RecoilRoot, useSetRecoilState } from "recoil";
 import { components as componentsConfig } from "../library";
 import { Renderer } from "./components/Renderer";
 import { componentIds } from "@store";
+import { ThemeProvider } from "styled-components";
+import { defaultTheme } from "./styles/theme";
+
 function App() {
-  const setComponentIds = useSetRecoilState(componentIds);
+  const setComponentIds = useSetRecoilState<string[]>(componentIds);
 
   useEffect(() => {
     setComponentIds(componentsConfig.map((cc) => cc.id));
@@ -21,9 +24,11 @@ function App() {
 
 const AppWithProviders = () => {
   return (
-    <RecoilRoot>
-      <App />
-    </RecoilRoot>
+    <ThemeProvider theme={defaultTheme}>
+      <RecoilRoot>
+        <App />
+      </RecoilRoot>
+    </ThemeProvider>
   );
 };
 
