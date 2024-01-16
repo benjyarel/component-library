@@ -1,4 +1,5 @@
-import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
+import styled from "styled-components";
 import { selectedComponentId } from "@store";
 import type { ComponentConfig } from "@shared-types";
 
@@ -7,13 +8,25 @@ interface ComponentLinkProps {
 }
 
 export const ComponentLink = ({ component }: ComponentLinkProps) => {
-  const setComponentIdselected = useSetRecoilState(selectedComponentId);
+  const [componentSelectedId, setComponentIdselected] =
+    useRecoilState(selectedComponentId);
 
   const handleOnClick = () => setComponentIdselected(component.id);
 
+  const isActive = componentSelectedId === component.id;
+
   return (
-    <li>
-      <button onClick={handleOnClick}>{component.componentName}</button>
-    </li>
+    <StyledLink $isActive={isActive} onClick={handleOnClick}>
+      {component.componentName}
+    </StyledLink>
   );
 };
+
+type StyledLinkProps = { $isActive: boolean };
+
+const StyledLink = styled.button<StyledLinkProps>`
+  all: unset;
+  color: ${({ $isActive }) => ($isActive ? "#172dba" : "inherit")};
+  cursor: ${({ $isActive }) => ($isActive ? "default" : "pointer")};
+  font-weight: ${({ $isActive }) => ($isActive ? "bold" : "normal")};
+`;
